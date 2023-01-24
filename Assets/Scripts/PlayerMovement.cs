@@ -6,10 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     //public Joystick joystick;
-
+    [SerializeField] ScriptableVector2 inputVector;
     private Vector3 movement;
     private Rigidbody playerRigidbody;
     private Quaternion targetRotation;
+
+    [SerializeField] Joystick joystick;
 
     private void Awake()
     {
@@ -17,10 +19,11 @@ public class PlayerMovement : MonoBehaviour
         targetRotation = transform.rotation; //null qt gives an error
     }
 
-    public void SetPlayerInput(Vector2 inputVector)
+
+    private void Update()
     {
-        float horizontal = inputVector.x;
-        float vertical = inputVector.y;
+        float horizontal = inputVector.value.x;
+        float vertical = inputVector.value.y;
 
         movement = new Vector3(horizontal, 0f, vertical);
 
@@ -30,15 +33,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Vector2 inputVec = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        SetPlayerInput(inputVec);
-    }
-
     private void FixedUpdate()
     {
-        if(movement!=null) playerRigidbody.MovePosition(playerRigidbody.position + movement * Time.fixedDeltaTime);
+        if(movement!=null) playerRigidbody.MovePosition(playerRigidbody.position + movement * Time.fixedDeltaTime * moveSpeed);
         if(targetRotation!=null) playerRigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10));
     }
 }
