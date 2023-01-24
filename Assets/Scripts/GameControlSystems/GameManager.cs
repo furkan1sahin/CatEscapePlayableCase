@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] int LevelToLoad = 0;
     [SerializeField] ScriptableEvent GameStartEvent;
     bool isGameStarted = false;
 
+    [SerializeField] ScriptableEvent loadLevelEvent;
+
     void Start()
     {
-        
+        loadLevelEvent.Invoke(); //TODO: pass data thorough events 
     }
 
     
