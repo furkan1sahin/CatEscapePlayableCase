@@ -2,22 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public class DoScale : MonoBehaviour
+public class DoScale : DoTweenBase
 {
-    [SerializeField] bool AutoStart = false;
-    [SerializeField] Vector3 scaleVector;
-    [SerializeField] float duration;
-    [SerializeField] int Loops = 0;
-    [SerializeField] LoopType loopType;
-    [SerializeField] Ease easeType;
-
-    void Start()
+    public override void StartTween()
     {
-        if (AutoStart) StartTween();
-    }
-
-    public void StartTween()
-    {
-        transform.DOScale(scaleVector, duration).SetLoops(Loops, loopType).SetEase(easeType);
+        transform.DOScale(tweenVector, duration).SetLoops(Loops, loopType).SetEase(easeType).OnComplete(OnCompleteEvent.Invoke); ;
     }
 }

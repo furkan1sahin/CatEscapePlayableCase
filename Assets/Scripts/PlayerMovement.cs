@@ -11,8 +11,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody playerRigidbody;
     private Quaternion targetRotation;
 
-    [SerializeField] Joystick joystick;
-
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
