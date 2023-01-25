@@ -16,11 +16,11 @@ public class OnTriggerEvent : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (CheckForTag.Length == 0 || other.gameObject.CompareTag(CheckForTag)) OnTriggerEnterEvent.Invoke();
+        if (CheckForTag.Length == 0 || other.gameObject.CompareTag(CheckForTag)) OnTriggerStayEvent.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (CheckForTag.Length == 0 || other.gameObject.CompareTag(CheckForTag)) OnTriggerEnterEvent.Invoke();
+        if (CheckForTag.Length == 0 || other.gameObject.CompareTag(CheckForTag)) OnTriggerExitEvent.Invoke();
     }
 }

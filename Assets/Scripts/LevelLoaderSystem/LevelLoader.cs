@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] List<LevelData> LevelList = new List<LevelData>();
     [SerializeField] ScriptableEvent SceneLoadedEvent;
+
     void Start()
     {
         

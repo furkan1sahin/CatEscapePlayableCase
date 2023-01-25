@@ -15,9 +15,23 @@ public class GameManager : MonoBehaviour
         loadLevelEvent.Invoke(); //TODO: pass data thorough events 
     }
 
-    
+
     void Update()
     {
-        if (!isGameStarted && Input.GetMouseButtonDown(0)) GameStartEvent.Invoke();
+        if (!isGameStarted && Input.GetMouseButtonDown(0))
+        {
+            GameStartEvent.Invoke();
+            isGameStarted = true;  
+        }
+    }
+
+    public void GameCompleted()
+    {
+
+    }
+
+    public void GameFailed()
+    {
+
     }
 }

@@ -7,6 +7,6 @@ public class DoRotate : DoTweenBase
 {
     public override void StartTween()
     {
-        transform.DORotate(tweenVector, duration).SetLoops(Loops, loopType).SetEase(easeType).OnComplete(OnCompleteEvent.Invoke); ;
+        transform.DOLocalRotate(tweenVector, duration).SetLoops(Loops, loopType).SetEase(easeType).OnComplete(OnCompleteEvent.Invoke); ;
     }
 }
