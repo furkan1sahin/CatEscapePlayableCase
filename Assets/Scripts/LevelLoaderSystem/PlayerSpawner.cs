@@ -7,10 +7,12 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] GameObject playerPrefab;
     [SerializeField] bool isSpawnPosOnLevel = true;
     [SerializeField] Vector3 spawnPos = new Vector3();
+    GameObject currentPlayer;
     public void SpawnPlayer()
     {
+        if(currentPlayer != null) { Destroy(currentPlayer); }
         if (isSpawnPosOnLevel) FindSpawnPos();
-        Instantiate(playerPrefab, spawnPos, Quaternion.identity);
+        currentPlayer = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
     }
 
     void FindSpawnPos()

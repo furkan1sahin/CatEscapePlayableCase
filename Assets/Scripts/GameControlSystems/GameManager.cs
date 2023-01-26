@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int LevelToLoad = 0;
     [SerializeField] ScriptableEvent GameStartEvent;
     bool isGameStarted = false;
-
+    bool isGameCompleted = false;
     [SerializeField] ScriptableEvent loadLevelEvent;
 
     void Start()
@@ -23,15 +23,22 @@ public class GameManager : MonoBehaviour
             GameStartEvent.Invoke();
             isGameStarted = true;  
         }
+
+        if(isGameCompleted&& Input.GetMouseButtonDown(0))
+        {
+            loadLevelEvent.Invoke();
+            isGameCompleted = false;
+            isGameStarted = false;
+        }
     }
 
     public void GameCompleted()
     {
-
+        isGameCompleted= true;  
     }
 
     public void GameFailed()
     {
-
+        isGameCompleted= true;
     }
 }

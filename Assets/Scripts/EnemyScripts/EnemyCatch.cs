@@ -17,7 +17,6 @@ public class EnemyCatch : MonoBehaviour
         if (fov == null) return;
         if (fov.visibleTargets.Count > 0)
         {
-            Debug.Log(fov.visibleTargets);
             CatchEvent.Invoke();
         }
     }

@@ -15,7 +15,19 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadLevel(int LevelIndex)
     {
+        UnloadAllLevels();
         StartCoroutine(LoadSceneAsync(LevelIndex));
+    }
+
+    void UnloadAllLevels()
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (i != 0)
+            {
+                SceneManager.UnloadSceneAsync(i);
+            }
+        }
     }
 
     IEnumerator LoadSceneAsync(int levelIndex)
